@@ -1,0 +1,23 @@
+import processing.serial.*;
+
+Serial myPort; 
+
+void setup() {
+  String portName = "COM3";  
+  myPort = new Serial(this, portName, 9600);
+}
+
+void draw() {
+  background(255); 
+  textAlign(CENTER, CENTER); 
+  textSize(24); 
+
+  fill(0); 
+  text("Press 1 to send '1' to Arduino\nPress 2 to send '2' to Arduino", width/2, height/2);
+}
+
+void keyPressed() {
+  if (key == '1' || key == '2') {
+    myPort.write(key); 
+  }
+}
